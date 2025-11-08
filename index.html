@@ -544,10 +544,28 @@
     color: var(--text-dark);
 }
 .cost-headline .highlight-box {
-    font-size: 32px;
-    padding: 7px 13px;
+    font-size: 24px;
+    padding: 0px 0px;
     background-color: rgba(255, 235, 55, 0.34);
 }
+
+.cost-efficiency-section .colorful-box {
+  border: 2px solid transparent; 
+  background: #fff; /* 内側は白 */
+  padding: 3px 3px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  letter-spacing: 0.1em;
+  color: #333;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #FFE259 0%, #19A05A 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+
 .line-deco {
     width: 89px;
     height: 8px;
@@ -564,10 +582,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    margin: 20px 0;
 }
 .diagram-person {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #3C302D;
 }
 .diagram-person img {
     height: 115px;
@@ -581,10 +604,25 @@
     position: relative;
 }
 .diagram-arrow-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    flex: 1;
+    height: 2px;
+    background: #4A3B2A; 
 }
+
+.diagram-arrow-group .arrow-label {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #F2972E;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .arrow-line {
     width: 211px;
     height: 7px;
@@ -608,26 +646,25 @@
     color: var(--primary-color);
 }
 .diagram-box {
-    border: 4px solid var(--secondary-color);
-    background: var(--bg-light);
-    padding: 18px 46px;
-    border-radius: 16px;
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 700;
-    font-size: 23px;
-    white-space: nowrap;
+  border: 2px solid #4A3B2A;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: #3C302D;
+  background: #fff;
 }
+
 .diagram-arrow-line {
     width: 62px;
     height: 7px;
     background: var(--secondary-color);
 }
 .diagram-box.green {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+  border-color: #19A05A;
+  color: #19A05A;
 }
 .cost-explanation {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 2;
     letter-spacing: 2.34px;
     max-width: 1186px;
@@ -1223,8 +1260,9 @@
     <div class="cost-headline">
         <span class="line-deco"></span>
         <span>中間業者なしの</span>
-        <span class="highlight-box">直接施工</span>
-        <span>だから実現できる安心プライス！</span>
+        <span class="colorful-box">直接施工</span>
+        <span>だから実現できる</span>
+        <span class="highlight-box">安心プライス！</span>
     </div>
 
     <div class="cost-diagrams">

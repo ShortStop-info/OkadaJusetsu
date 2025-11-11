@@ -451,7 +451,6 @@
     object-fit: cover;
 }
 .feature-content {
-    background-image: url('images/37dff6d8e2e28b9221de29033d41c16d5b18bea8.png');
     background-size: cover;
     background-position: center;
     padding: 44px;
@@ -474,14 +473,8 @@
     gap: 14px;
     margin: 0 0 28px 0;
 }
-.feature-content .highlight-box {
-    font-weight: 700;
-    font-size: 28px;
-    letter-spacing: 3.64px;
-    padding: 7px 13px;
-    border: 2px solid var(--secondary-color);
-    background-color: var(--bg-light);
-}
+
+
 .feature-content p {
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 400;
@@ -544,10 +537,36 @@
     color: var(--text-dark);
 }
 .cost-headline .highlight-box {
-    font-size: 32px;
-    padding: 7px 13px;
+    font-size: 24px;
+    padding: 0px 0px;
     background-color: rgba(255, 235, 55, 0.34);
 }
+
+.colorful-box {
+  position: relative;
+  display: inline-block;
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  color: #333;
+  background: #fff;
+  padding: 4px 10px 4px 15px; /* ← 文字の内側の余白だけを調整 */
+
+}
+
+.colorful-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 5px; /* ← 枠線の太さだけを決める */
+  background: linear-gradient(90deg, #FFF74A 0%, #07B862 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
 .line-deco {
     width: 89px;
     height: 8px;
@@ -564,10 +583,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    margin: 20px 0;
 }
 .diagram-person {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #3C302D;
 }
 .diagram-person img {
     height: 115px;
@@ -581,10 +605,25 @@
     position: relative;
 }
 .diagram-arrow-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    flex: 1;
+    height: 2px;
+    background: #4A3B2A; 
 }
+
+.diagram-arrow-group .arrow-label {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #F2972E;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .arrow-line {
     width: 211px;
     height: 7px;
@@ -608,23 +647,22 @@
     color: var(--primary-color);
 }
 .diagram-box {
-    border: 4px solid var(--secondary-color);
-    background: var(--bg-light);
-    padding: 18px 46px;
-    border-radius: 16px;
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 700;
-    font-size: 23px;
-    white-space: nowrap;
+  border: 2px solid #4A3B2A;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: #3C302D;
+  background: #fff;
 }
+
 .diagram-arrow-line {
     width: 62px;
     height: 7px;
     background: var(--secondary-color);
 }
 .diagram-box.green {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+  border-color: #19A05A;
+  color: #19A05A;
 }
 .cost-explanation {
     font-size: 18px;
@@ -680,25 +718,44 @@
 .image-frame {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -8%;
     width: 533px;
     height: 410px;
     background-color: rgba(255, 235, 55, 0.34);
 }
-.flow-steps-container h3 {
+
+.flow-path {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  position: relative; /* ← 現在位置を基準に移動可能にする */
+  top: 10px;   /* 下方向へ（数値↑でさらに下） */
+  left: -15%; /* 左方向へ（数値↓でさらに左） */
+}
+
+.path-group {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* タイトル → 図 → 注釈の縦並び */
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+/* タイトル */
+.path-group h3 {
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 2;
     letter-spacing: 3.12px;
-    margin: 0 0 30px 0;
+    margin: 0 0 8px 0;   /* ← 位置リセットで自然な整列 */
 }
-.flow-path {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
-}
+
+/* ラベル（A/B） */
 .path-label {
     width: 53px;
     height: 53px;
@@ -711,40 +768,56 @@
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
     font-size: 16px;
+    border: 2px solid #fff;
+    flex-shrink: 0;
+
+    position: relative;
+    top: -36px;   
+    left: 30px;  
 }
+
+/* ステップ列 */
+
+
 .steps-chain {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     gap: 8px;
 }
+
+/* ステップボックス */
 .step {
     background-color: var(--bg-light);
     border: 2px solid var(--secondary-color);
-    padding: 10px 17px;
+    padding: 6px 12px;
     border-radius: 13px;
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
     font-size: 16px;
     position: relative;
-    margin-right: 11px; /* space for arrow */
+    margin-right: 16px;  /* わからない */
 }
-.step:not(.no-arrow)::after {
+
+/* 矢印 */
+.step:not(:last-child)::after {
     content: '';
     position: absolute;
-    right: -17px;
+    right: -13px;
     top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    width: 17px;
-    height: 17px;
+    transform: translateY(-50%) rotate(270deg);
+    width: 13px;
+    height: 13px;
     background-color: var(--secondary-color);
     clip-path: polygon(50% 100%, 0 0, 100% 0);
 }
-.flow-note {
-    font-size: 15px;
-    letter-spacing: 1.95px;
-    text-align: left;
-    margin: 10px 0 20px 63px;
+
+.path-note{
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 13px;
+  color: #6b615c;
+  line-height: 1.5;
+  margin: 0;               /* 余白不要。グリッドで位置が決まる */
 }
 
 @media (max-width: 1024px) {
@@ -786,9 +859,15 @@
     letter-spacing: 3.12px;
     color: var(--secondary-color);
     margin: 0;
+    position: relative;         
+    left: 30%;                  
+    transform: translateX(-25%);
 }
 .info-list {
-    margin: 0;
+    width: 480px;
+    position: relative;         
+    left: 30%;                  
+    transform: translateX(-25%);
     padding: 13px 0;
     display: flex;
     flex-direction: column;
@@ -809,19 +888,31 @@
     margin: 0;
 }
 .map-container {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
+  position: relative;
+  width: 480px;          /* 地図の横幅（必要に応じて調整） */
+  height: 300px;         /* 高さの調整 */
+  left: 30%;             /* 画面の左から25%位置に配置 */
+  transform: translateX(-25%); /* 自身の幅の半分を戻して“中央寄せ風”に */
+  margin-top: 30px;      /* 上下の余白 */
+  border-radius: 8px;
+  overflow: hidden;
 }
+
 .map-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 .about-image img {
-    width: 100%;
-    height: 718px;
-    object-fit: cover;
+    position: relative;         
+    left: 45%;                  
+    transform: translateX(-40%);
+    width: 950px;         /* 横幅固定（480pxの左画像より少し大きめ） */
+    height: 550px;        /* 必要に応じて縦を調整 */
+    left: 75%;
+    object-fit: cover;    /* 外側をトリミングして中央を表示 */
+    object-position: center top; /* トリミングの中心を上寄せ */
+    border-radius: 6px;
 }
 
 @media (max-width: 992px) {
@@ -1207,9 +1298,9 @@
     <div class="feature-container">
         <img src="images/1957cd0e7a09347ba83a727a902ea2b0a9ac9232.png" alt="Skilled worker" class="feature-image">
         <div class="feature-content">
-            <h3><span class="highlight-box">熟練工による施工</span>でレベルの高い仕上がりが可能！</h3>
+            <h3><span class="colorful-box">熟練工による施工</span>でレベルの高い仕上がりが可能！</h3>
             <p>
-                <span class="text-highlight-blue">漏水</span>や<span class="text-highlight-blue">クロスが汚れ</span><span class="text-highlight-orange">る</span>などの心配がありません。
+                <span class="text-highlight-blue">漏水</span>や<span class="text-highlight-orange">クロスが汚れる</span>などの心配がありません。
             </p>
         </div>
     </div>
@@ -1223,8 +1314,9 @@
     <div class="cost-headline">
         <span class="line-deco"></span>
         <span>中間業者なしの</span>
-        <span class="highlight-box">直接施工</span>
-        <span>だから実現できる安心プライス！</span>
+        <span class="colorful-box">直接施工</span>
+        <span>だから実現できる</span>
+        <span class="highlight-box">安心プライス！</span>
     </div>
 
     <div class="cost-diagrams">
@@ -1277,7 +1369,7 @@
             <img src="images/9c842b8d6988272e2097e5873d5716a5edb7c08f.png" alt="Consultation scene" class="flow-image">
             <div class="image-frame"></div>
         </div>
-        <div class="flow-steps-container">
+        <div class="path-group">
             <h3>現地までご訪問または<br>スマホからカンタン見積もり</h3>
             <div class="flow-path">
                 <div class="path-label">A</div>
@@ -1289,7 +1381,7 @@
                     <div class="step no-arrow">実施</div>
                 </div>
             </div>
-            <p class="flow-note">※金額確定はご契約時に現地調査を行い最終確定します。</p>
+            <p class=".path-note">※金額確定はご契約時に現地調査を行い最終確定します。</p>
             <div class="flow-path">
                 <div class="path-label">B</div>
                 <div class="steps-chain">

@@ -45,6 +45,8 @@ section {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--secondary-color);
   color: transparent;
+  margin: 0;
+  padding-bottom: 6px;
   margin-bottom: 10px;
 }
 

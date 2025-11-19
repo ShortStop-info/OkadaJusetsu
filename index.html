@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generated Page</title>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generated Page</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>水廻りリフォーム レンジャー</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="global.css">
-  <style id="sections-styles">
+<link rel="stylesheet" href="global.css">
+<style id="sections-styles">
+
 /* CSS for section section:Header */
 .site-header {
-    padding: 36px 0;
+    padding: 30px 0;
     background-color: var(--bg-light);
 }
 .header-container {
+    top: 10%;
     max-width: 1427px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,12 +32,17 @@
     color: #36a557;
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 1.3;
     letter-spacing: 0.64px;
     text-align: center;
     margin: 0;
+    padding-left: 18px;
 }
+/*下線消し*/
+.logo { 
+    text-decoration: none;
+} 
 .header-divider {
     width: 1px;
     height: 78px;
@@ -56,7 +63,7 @@
     color: var(--text-dark);
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     position: relative;
 }
@@ -70,7 +77,6 @@
     background: linear-gradient(135deg, #c7ee7e 0%, #1a9c5d 152.87%);
 }
 .cta-button {
-    background: linear-gradient(135deg, #c7ee7e 0%, #1a9c5d 152.87%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,8 +86,9 @@
     color: var(--text-light);
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     white-space: nowrap;
+    background: linear-gradient(135deg, #c7ee7e 0%, #1a9c5d 152.87%);
 }
 .cta-button img {
     width: 18px;
@@ -96,7 +103,7 @@
         gap: 30px;
     }
     .main-nav a {
-        font-size: 18px;
+        font-size: 16px;
     }
     .logo h1 {
         font-size: 24px;
@@ -133,12 +140,12 @@
 /* CSS for section section:Hero */
 .hero-section {
     padding-top: 100px;
-    padding-bottom: 100px;
     min-height: 850px;
     display: flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    padding-bottom: 0; 
+    z-index: 1;  
 }
 .hero-bg-elements {
     position: absolute;
@@ -146,15 +153,20 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    overflow: visible !important; 
 }
 .hero-image-container {
     position: absolute;
-    top: -129px; /* 1145.08 - 1274 */
-    left: 550px; /* 6860 - 6236 */
-    width: 1535px;
-    height: 1124px;
+    top: 10px;
+    right: -60px;  
+    left: auto;         
+    width: 1500px;
+    min-width: 720px;    
+    aspect-ratio: 4 / 3;  
+    height: auto;          
+    z-index: 2;
 }
+
 .hero-gradient-shape {
     position: absolute;
     width: 100%;
@@ -165,8 +177,8 @@
 }
 .hero-vector-shape {
     position: absolute;
-    top: 266px; /* 1411 - 1145 */
-    left: -74px; /* 6786 - 6860 */
+    top: 266px; 
+    left: -74px; 
     width: 418px;
     height: 506px;
     transform: rotate(90deg);
@@ -174,52 +186,119 @@
 }
 .hero-masked-image {
     position: absolute;
-    top: -133px; /* 1012 - 1145 */
-    left: -65px; /* 6795 - 6860 */
-    width: 1600px;
-    height: 1257px;
+    inset: 0;
     -webkit-mask-image: url('images/ece298d0ec2c16f10310d45724b276a6035cb503.png');
     mask-image: url('images/ece298d0ec2c16f10310d45724b276a6035cb503.png');
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+    -webkit-mask-position: right center; 
+    mask-position: right center;
+    overflow: hidden;
 }
 .hero-masked-image img {
     position: absolute;
-    top: 341px; /* 1353 - 1012 */
-    left: 200px; /* 6995 - 6795 */
-    width: 620px;
-    height: 869px;
+    transform: translate(47%, -12%);
+    bottom: 15%;
+    right: 10%;
+    width: 100%; 
+    height: auto;         
+    object-fit: contain;
 }
-.deco-vector-1 { position: absolute; top: 47px; left: -106px; transform: rotate(-18deg); }
-.deco-vector-2 { position: absolute; top: 640px; left: -146px; transform: rotate(5deg); }
-.deco-vector-3 { position: absolute; top: 249px; left: -103px; }
-.deco-vector-4 { position: absolute; top: 108px; left: 45px; }
-.deco-vector-5 { position: absolute; top: 613px; left: -55px; }
-
+/* 左上　緑 */
+.deco-vector-1 { 
+    position: relative; 
+    top: 47px; 
+    left: -106px;  
+    width: 20%;     
+    height: auto; 
+    transform: translate(20px, -95px); 
+    z-index: 1;
+    overflow: visible;  
+}
+/* 左下緑 */
+.deco-vector-2 { 
+    position: absolute; 
+    top: 640px; 
+    left: -146px; 
+    transform: translate(-20px, -150px); 
+    width: 40%;           
+    height: auto; 
+}
+/* 左黄色玉 */
+.deco-vector-3 { 
+    position: absolute; 
+    top: 249px; 
+    left: -103px;
+    transform: translate(-2px, -150px); 
+    width: 15%;    
+    height: auto;
+}
+/* 左上点々 */
+.deco-vector-4 { position: absolute; 
+    top: 108px; 
+    left: 45px;
+    transform: translate(-55px, -140px); 
+    width: 15%;    
+    height: auto;
+    opacity: 0.2;
+}
+/* 右ぼつぼつ */
+.deco-vector-5 { 
+    position: absolute; 
+    top: 613px; 
+    left: -55px;
+    transform: translate(1100px, -30px); 
+    width: 15%;     
+    height: auto;
+    z-index: 2;
+    opacity: 0.2;
+}
+/* 左下ぼつぼつ */
+.deco-vector-6 { 
+    position: absolute; 
+    top: 613px; 
+    left: -55px;
+    transform: translate(-20px, -200px); 
+    width: 15%;     
+    height: auto;
+    z-index: 2;
+    opacity: 0.2;
+}
+.deco-vector-8 { position: absolute; 
+    top: 249px; 
+    left: -103px;
+    transform: translate(1300px, 250px); 
+    width: 15%;    
+    height: auto;
+    z-index: 200;
+}
 .hero-content {
     position: relative;
     z-index: 2;
-    padding-left: 175px;
+    padding-left: 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    transform: translate(85px, -160px);
 }
 .hero-headline-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1px;
+  text-align: center;  
+  width: 100%; 
 }
 .hero-headline {
-    background-color: #1a9c5d;
-    padding: 8px 40px;
+    background-color: 		#1A9C5D;
+    padding: 8px 35px;
     border-radius: 58px;
     color: var(--text-light);
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 400;
-    font-size: 27px;
+    font-size: 25px;
     line-height: 1.6;
     letter-spacing: 1.08px;
     position: relative;
@@ -234,51 +313,68 @@
     height: 0;
     border-left: 17px solid transparent;
     border-right: 17px solid transparent;
-    border-top: 27px solid #1a9c5d;
+    border-top: 27px solid 	#1A9C5D;
 }
 .hero-headline .highlight-yellow {
-    font-weight: 700;
-    font-size: 33px;
-    color: #fdf56b;
+    font-weight: bold;
+    font-size: 30px;
+    color: #FFF56B;
 }
 .hero-headline .highlight-white {
-    font-weight: 700;
-    font-size: 33px;
+    font-weight: bold;
+    font-size: 20px;
     color: #ffffff;
 }
 .hero-subtitle-region, .hero-subtitle-service {
-    color: var(--text-dark);
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1.6;
-    letter-spacing: 2.88px;
-    margin: 0;
+  color: var(--text-dark);
+  font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.6;
+  letter-spacing: 2.88px;
+  margin: 0;
+  align-self: center;   
+  text-align: center;
 }
-.hero-subtitle-region { margin-top: 40px; }
+.hero-subtitle-region { 
+    margin-top: 40px; 
+}
 .hero-title-main, .hero-title-brand {
-    color: #1a9c5d;
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 800;
-    font-size: 66px;
+    color: #1A9C5D;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
     line-height: 1.6;
-    text-shadow: -5px -5px 0 #fff, 5px -5px 0 #fff, -5px 5px 0 #fff, 5px 5px 0 #fff;
     margin: 0;
+    align-self: center;   
+   text-align: center;
 }
-.hero-title-main { margin-top: -10px; }
-.hero-title-main .spacing-1 { letter-spacing: 15.84px; }
-.hero-title-main .spacing-2 { letter-spacing: 11.22px; }
-.hero-title-main .spacing-3 { letter-spacing: 5.28px; }
-.hero-title-brand { letter-spacing: 13.86px; margin-top: -20px; }
-
+.hero-title-main { 
+    margin-top: -10px; 
+}
+.hero-title-main .spacing-1 { 
+    letter-spacing: 15.84px; 
+}
+.hero-title-main .spacing-2 { 
+    letter-spacing: 11.22px; 
+}
+.hero-title-main .spacing-3 { 
+    letter-spacing: 5.28px; 
+}
+.hero-title-brand { 
+    letter-spacing: 13.86px; margin-top: -20px; 
+}
 .hero-features {
     display: flex;
-    gap: 12px;
+    justify-content: center;
+    gap: 0;
     margin-top: 34px;
+    align-items: center;
+    align-self: center;
 }
 .feature-circle {
-    width: 205px;
-    height: 205px;
+    width: 160px;
+    height: 160px;
     border: 2px solid #1a9c5d;
     border-radius: 50%;
     display: flex;
@@ -289,20 +385,30 @@
     color: #1a9c5d;
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
+    background-color: #fff; 
+    position: relative;
+    margin-right: -10px;
+    z-index: 1;
 }
 .feature-circle p {
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.2;
     margin: 10px 0 0;
 }
 .feature-circle .small-text {
-    font-size: 22px;
+    font-size: 18px;
+    margin: 10px 0 0;
+    line-height: 1.2;
 }
 .feature-icon {
-    height: 56px;
+    height: 50px;
     width: auto;
 }
-
+.hero-features .feature-circle:nth-child(1) {
+     z-index: 3;
+    }
+.hero-features .feature-circle:nth-child(2) { z-index: 2; }
+.hero-features .feature-circle:nth-child(3) { z-index: 1; }
 @media (max-width: 1200px) {
     .hero-content { padding-left: 50px; }
     .hero-image-container { left: 40%; }
@@ -325,73 +431,123 @@
 
 /* CSS for section section:Services */
 .services-section {
+    padding-top: 0 !important;
     background-color: var(--bg-light);
     text-align: center;
+    z-index: 2;  
 }
-.service-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto 40px;
+.deco-vector-7 { 
+    position: relative;
+    top: 108px; 
+    left: 45px;
+    transform: translate(-55px, -140px); 
+    width: 15%;    
+    height: auto;
+    opacity: 0.2;
 }
+.service-cards-grid{
+  display: flex;
+  gap: 30px;
+  padding: 24px 16px 40px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  padding-left: calc((100vw - 560px) / 2);
+  padding-right: calc((100vw - 560px) / 2);
+  box-sizing: border-box;
+}
+
 .service-card {
-    background-color: var(--bg-light);
-    border: 1px solid #eee;
+  position: relative;
+
+  /* scroll-snap は無効に（勝手に位置が補正されるのを防ぐ） */
+  /* scroll-snap-align: center; は削除 */
+
+  flex: 0 0 640px;   /* カード幅は640でOK（ここはお好みで） */
+  max-width: 100%;
+
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "media  speccol"
+    "thumbs speccol";
+  column-gap: 16px;
+  row-gap: 12px;
+
+  background: #fff;
+  box-sizing: border-box;
+  margin: 0 0 24px 0;
 }
+
 .card-header {
-    background-color: var(--accent-color);
-    padding: 7px;
-    color: var(--text-dark);
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    letter-spacing: 3.68px;
-    text-align: center;
+  background: #FFF348;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0;
 }
 .card-main-image {
-    width: 100%;
-    height: 259px;
-    object-fit: cover;
+  grid-area: media;
+  width: 100%;                   /* ★ 比率を揃える高さ */
+  object-fit: cover;
+  height: 240px;  
 }
-.card-body {
-    padding: 22px 13px;
-    background-color: var(--bg-grey);
+.spec-col {
+  grid-area: speccol;
+  display: flex;
+  flex-direction: column;
+}
+.card-body{ 
+    display: contents; 
 }
 .price-table {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 12px;
+  background: #f6f5f3;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
 }
 .price-row {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-size: 20px;
-    color: var(--text-dark);
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #949494;
+  font-size: 18px;
+  padding-bottom: 20px;
+  letter-spacing: 3px;
 }
 .price-row.total {
     border-bottom: none;
 }
 .card-gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 13px;
+  grid-area: thumbs;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 120px;         
+  gap: 10px;
 }
 .card-gallery img {
-    width: 100%;
-    height: 128px;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .service-categories {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: center;  
+  align-items: center;       
+  gap: 16px;
+  padding: 8px 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 16px;
+  -webkit-overflow-scrolling: touch;
 }
 .category-btn {
     background-color: var(--bg-light);
@@ -403,36 +559,43 @@
     color: var(--text-dark);
     cursor: pointer;
     transition: all 0.3s ease;
+    justify-content: center; 
 }
 .category-btn.active, .category-btn:hover {
     background-color: var(--secondary-color);
     color: var(--text-light);
 }
+
 .services-disclaimer {
-    font-size: 15px;
+    font-size: 12px;
     line-height: 1.6;
     letter-spacing: 1.95px;
     color: var(--text-dark);
     max-width: 872px;
     margin: 0 auto;
+    padding-top: 20px;
 }
 
-@media (max-width: 1024px) {
-    .service-cards-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+@media (max-width: 980px){
+  .service-card{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "media"
+      "header"
+      "spec"
+      "thumbs";
+    gap:14px;
+    padding:14px;
+  }
+.price-row{ font-size:24px;}
 }
-@media (max-width: 768px) {
-    .service-cards-grid {
-        grid-template-columns: 1fr;
-    }
-    .service-categories {
-        gap: 10px;
-    }
-    .category-btn {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
+
+@media (max-width: 1024px){
+  .service-cards-grid{ display:flex; flex-wrap:nowrap; overflow-x:auto; }
+}
+
+@media (max-width: 768px){
+  .service-cards-grid{ display:flex; flex-wrap:nowrap; overflow-x:auto; }
 }
 
 /* CSS for section section:Feature */
@@ -440,93 +603,54 @@
     padding: 0;
 }
 .feature-container {
-    display: grid;
-    grid-template-columns: 592px 1fr;
-    align-items: center;
-    max-width: 100%;
+  display: grid;
+  grid-template-columns: 592px 1fr;
+  align-items: stretch;
 }
 .feature-image {
-    width: 592px;
-    height: 339px;
-    object-fit: cover;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
 }
-.feature-content {
-    background-image: url('images/37dff6d8e2e28b9221de29033d41c16d5b18bea8.png');
-    background-size: cover;
-    background-position: center;
-    padding: 44px;
-    text-align: center;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* 背景＋文字の画像重ね */
+.feature-stack {
+  position: relative;
+  width: 100%;
+  height: 350px;
 }
-.feature-content h3 {
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 2;
-    letter-spacing: 3.12px;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin: 0 0 28px 0;
+
+.feature-stack .bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.2;
 }
-.feature-content .highlight-box {
-    font-weight: 700;
-    font-size: 28px;
-    letter-spacing: 3.64px;
-    padding: 7px 13px;
-    border: 2px solid var(--secondary-color);
-    background-color: var(--bg-light);
-}
-.feature-content p {
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 2;
-    letter-spacing: 3.12px;
-    color: var(--text-dark);
-    margin: 0;
-}
-.text-highlight-blue {
-    font-weight: 700;
-    font-size: 28px;
-    color: #287bff;
-}
-.text-highlight-orange {
-    font-weight: 700;
-    font-size: 28px;
-    color: #d48206;
-    letter-spacing: 7.84px;
+
+.feature-stack .text-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
 }
 
 @media (max-width: 1024px) {
-    .feature-container {
-        grid-template-columns: 1fr;
-    }
-    .feature-image {
-        width: 100%;
-        height: auto;
-    }
-    .feature-content {
-        padding: 40px 20px;
-    }
+  .feature-container {
+    grid-template-columns: 1fr;
+  }
+  .feature-image,
+  .feature-stack {
+    height: auto;
+  }
 }
-@media (max-width: 768px) {
-    .feature-content h3, .feature-content p {
-        font-size: 18px;
-    }
-    .feature-content .highlight-box, .text-highlight-blue, .text-highlight-orange {
-        font-size: 22px;
-    }
-    .feature-content h3 {
-        flex-direction: column;
-    }
-}
-
 /* CSS for section section:CostEfficiency */
 .cost-efficiency-section {
     background-color: var(--bg-light);
@@ -1093,10 +1217,9 @@
     <div class="hero-bg-elements">
         <!--merged image-->
         <div class="hero-image-container">
-            <div class="hero-gradient-shape"></div>
-            <img src="images/116_86.svg" alt="decorative vector" class="hero-vector-shape">
+            <!-- <div class="hero-gradient-shape"></div> -->
             <div class="hero-masked-image">
-                <img src="images/ff8c4e3e34397fd996ebc575623f47831e9c1258.png" alt="Smiling professional worker">
+                <img src="images/Group_1.png" alt="Smiling professional worker">
             </div>
         </div>
         <img src="images/116_81.svg" alt="decorative element" class="deco-vector-1">
@@ -1104,12 +1227,14 @@
         <img src="images/116_98.svg" alt="decorative element" class="deco-vector-3">
         <img src="images/116_183.svg" alt="decorative element" class="deco-vector-4">
         <img src="images/116_113.svg" alt="decorative element" class="deco-vector-5">
-    </div>
+        <img src="images/116_113.svg" alt="decorative element" class="deco-vector-6">
+        <img src="images/116_98.svg" alt="decorative element" class="deco-vector-8">
+    </div>   
 
     <div class="hero-content">
         <div class="hero-headline-wrapper">
             <div class="hero-headline">
-                <span><span class="highlight-yellow">中間業者なし</span>の<span class="highlight-white">直接施工</span>だから安い！</span>
+                <span><span class="highlight-yellow">中間業者なし</span>の<span class="highlight-yellow">直接施工</span>だから安い！</span>
             </div>
         </div>
         <p class="hero-subtitle-region">名古屋市及び周辺地域で</p>
@@ -1118,7 +1243,6 @@
             <span class="spacing-1">水</span><span class="spacing-2">廻</span><span class="spacing-3">りリフォー</span>ム
         </h2>
         <h3 class="hero-title-brand">レンジャー</h3>
-
         <div class="hero-features">
             <div class="feature-circle">
                 <img src="images/116_601.svg" alt="icon" class="feature-icon">
@@ -1140,80 +1264,139 @@
         <h2 class="section-title">Services</h2>
         <p class="section-subtitle">取扱商品</p>
     </div>
+    <img src="images/116_113.svg" alt="decorative element" class="deco-vector-5">
+    <div class="service-cards-grid" id="serviceGrid">
+        <div class="service-card" data-category="ユニットバス">
+            <img class="card-main-image" src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="ユニットバス">
+            <div class="spec-col">
+              <div class="card-header">ユニットバス</div>
+              <div class="price-table">
+                <div class="price-row"><span>施工期間</span><span>2週間</span></div>
+                <div class="price-row"><span>料金</span><span>¥200,000</span></div>
+                <div class="price-row"><span>施工料金</span><span>¥200,000</span></div>
+                <div class="price-row total"><span>合計金額</span><span>¥200,000</span></div>
+              </div>
+            </div>
+            <div class="card-gallery">
+              <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
+              <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
+            </div>
+        </div>
 
-    <div class="service-cards-grid">
-        <div class="service-card">
-            <div class="card-header">キッチン</div>
-            <img src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="キッチン" class="card-main-image">
-            <div class="card-body">
-                <div class="price-table">
-                    <div class="price-row"><span class="label">施工期間</span><span class="value">2週間</span></div>
-                    <div class="price-row"><span class="label">料金</span><span class="value">¥200,000</span></div>
-                    <div class="price-row"><span class="label">施工料金</span><span class="value">¥200,000</span></div>
-                    <div class="price-row total"><span class="label">合計金額</span><span class="value">¥200,000</span></div>
-                </div>
-                <div class="card-gallery">
-                    <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
-                    <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
-                </div>
+          <div class="service-card" data-category="食洗器">
+            <img class="card-main-image" src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="食洗器">
+            <div class="spec-col">
+              <div class="card-header">食洗器</div>
+              <div class="price-table">
+                <div class="price-row"><span>施工期間</span><span>2週間</span></div>
+                <div class="price-row"><span>料金</span><span>¥200,000</span></div>
+                <div class="price-row"><span>施工料金</span><span>¥200,000</span></div>
+                <div class="price-row total"><span>合計金額</span><span>¥200,000</span></div>
+              </div>
             </div>
-        </div>
-        <div class="service-card">
-            <div class="card-header">キッチン</div>
-            <img src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="キッチン" class="card-main-image">
-            <div class="card-body">
-                <div class="price-table">
-                    <div class="price-row"><span class="label">施工期間</span><span class="value">2週間</span></div>
-                    <div class="price-row"><span class="label">料金</span><span class="value">¥200,000</span></div>
-                    <div class="price-row"><span class="label">施工料金</span><span class="value">¥200,000</span></div>
-                    <div class="price-row total"><span class="label">合計金額</span><span class="value">¥200,000</span></div>
-                </div>
-                <div class="card-gallery">
-                    <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
-                    <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
-                </div>
+    
+            <div class="card-gallery">
+              <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
+              <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
             </div>
+          </div>
+
+        <div class="service-card" data-category="キッチン">
+        <img class="card-main-image" src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="キッチン">
+        <div class="spec-col">
+          <div class="card-header">キッチン</div>
+          <div class="price-table">
+            <div class="price-row"><span>施工期間</span><span>2週間</span></div>
+            <div class="price-row"><span>料金</span><span>¥200,000</span></div>
+            <div class="price-row"><span>施工料金</span><span>¥200,000</span></div>
+            <div class="price-row total"><span>合計金額</span><span>¥200,000</span></div>
+          </div>
         </div>
-        <div class="service-card">
-            <div class="card-header">キッチン</div>
-            <img src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="キッチン" class="card-main-image">
-            <div class="card-body">
-                <div class="price-table">
-                    <div class="price-row"><span class="label">施工期間</span><span class="value">2週間</span></div>
-                    <div class="price-row"><span class="label">料金</span><span class="value">¥200,000</span></div>
-                    <div class="price-row"><span class="label">施工料金</span><span class="value">¥200,000</span></div>
-                    <div class="price-row total"><span class="label">合計金額</span><span class="value">¥200,000</span></div>
-                </div>
-                <div class="card-gallery">
-                    <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
-                    <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
-                </div>
-            </div>
+        <div class="card-gallery">
+          <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
+          <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
         </div>
+      </div>
+
+        <div class="service-card" data-category="給湯器">
+        <img class="card-main-image" src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="給湯器">
+        <div class="spec-col">
+          <div class="card-header">給湯器</div>
+          <div class="price-table">
+            <div class="price-row"><span>施工期間</span><span>2週間</span></div>
+            <div class="price-row"><span>料金</span><span>¥200,000</span></div>
+            <div class="price-row"><span>施工料金</span><span>¥200,000</span></div>
+            <div class="price-row total"><span>合計金額</span><span>¥200,000</span></div>
+          </div>
+        </div>
+        <div class="card-gallery">
+          <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
+          <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
+        </div>
+      </div>
+        <div class="service-card" data-category="トイレ">
+        <img class="card-main-image" src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="トイレ">
+        <div class="spec-col">
+          <div class="card-header">トイレ</div>
+          <div class="price-table">
+            <div class="price-row"><span>施工期間</span><span>2週間</span></div>
+            <div class="price-row"><span>料金</span><span>¥200,000</span></div>
+            <div class="price-row"><span>施工料金</span><span>¥200,000</span></div>
+            <div class="price-row total"><span>合計金額</span><span>¥200,000</span></div>
+          </div>
+        </div>
+        <div class="card-gallery">
+          <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
+          <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
+        </div>
+      </div>
+
+        <div class="service-card" data-category="洗面化粧台">
+        <img class="card-main-image" src="images/e13930c5d460b61552989f6434d14e8cebf0b923.png" alt="洗面化粧台">
+        <div class="spec-col">
+          <div class="card-header">洗面化粧台</div>
+          <div class="price-table">
+            <div class="price-row"><span>施工期間</span><span>2週間</span></div>
+            <div class="price-row"><span>料金</span><span>¥200,000</span></div>
+            <div class="price-row"><span>施工料金</span><span>¥200,000</span></div>
+            <div class="price-row total"><span>合計金額</span><span>¥200,000</span></div>
+          </div>
+        </div>
+        <div class="card-gallery">
+          <img src="images/d512ec001247e2d00b3d46991de4f8ad58aeb2cc.png" alt="gallery image">
+          <img src="images/f0dbb6f5d7994fb700109c9737516c54c11d3ea7.png" alt="gallery image">
+        </div>
+      </div>
+      
     </div>
+    <div class="service-categories" id="categoryBar">
+        <button class="category-btn" data-category="ユニットバス">ユニットバス</button>
+        <button class="category-btn" data-category="食洗器">食洗器</button>
+        <button class="category-btn" data-category="キッチン">キッチン</button>
+        <button class="category-btn" data-category="給湯器">給湯器</button>
+        <button class="category-btn" data-category="トイレ">トイレ</button>
+        <button class="category-btn" data-category="洗面化粧台">洗面化粧台</button>
+        
+      </div>
 
-    <div class="service-categories">
-        <button class="category-btn">ユニットバス</button>
-        <button class="category-btn">食洗器</button>
-        <button class="category-btn active">キッチン</button>
-        <button class="category-btn">給湯器</button>
-        <button class="category-btn">トイレ</button>
-        <button class="category-btn">洗面化粧台</button>
-    </div>
-
-    <p class="services-disclaimer">※上記以外にも多くの商品に対応可能です。　※グレードアップ等は別途お見積もり致します。<br>※施工のための内装工事（ex.クロスの張り替え）も実施可能です　※期間の目安はご契約日からの起算となります</p>
+    <p class="services-disclaimer">※上記以外にも多くの商品に対応可能です。 ※グレードアップ等は別途お見積もり致します。<br>※施工のための内装工事（ex.クロスの張り替え）も実施可能です　※期間の目安はご契約日からの起算となります</p>
 </section>
+
+
 <section id="feature" class="feature-section">
     <div class="feature-container">
-        <img src="images/1957cd0e7a09347ba83a727a902ea2b0a9ac9232.png" alt="Skilled worker" class="feature-image">
-        <div class="feature-content">
-            <h3><span class="highlight-box">熟練工による施工</span>でレベルの高い仕上がりが可能！</h3>
-            <p>
-                <span class="text-highlight-blue">漏水</span>や<span class="text-highlight-blue">クロスが汚れ</span><span class="text-highlight-orange">る</span>などの心配がありません。
-            </p>
-        </div>
+
+      <img src="images/1957cd0e7a09347ba83a727a902ea2b0a9ac9232.png" class="feature-image" alt="worker">
+  
+      <div class="feature-stack">
+        <img src="images/37dff6d8e2e28b9221de29033d41c16d5b18bea8.png" class="bg-img" alt="background">
+        <img src="images/feature-image.png" class="text-img" alt="text">
+      </div>
+  
     </div>
-</section>
+  </section>
+
+
 <section id="cost-efficiency" class="cost-efficiency-section">
     <div class="section-title-container">
         <h2 class="section-title">Our Cost Efficiency</h2>

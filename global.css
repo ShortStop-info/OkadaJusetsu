@@ -46,6 +46,7 @@ section {
   -webkit-text-stroke-color: var(--secondary-color);
   color: transparent;
   margin: 0;
+  padding-bottom: 6px;
 }
 
 .section-subtitle {

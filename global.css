@@ -47,12 +47,13 @@ section {
   color: transparent;
   margin: 0;
   padding-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .section-subtitle {
   font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.6;
   letter-spacing: 3.12px;
   color: var(--secondary-color);
@@ -70,3 +71,34 @@ section {
     font-size: 20px;
   }
 }
+
+
+
+.cost-efficiency-section .cost-headline {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: #333;
+  padding-top: 14px;
+  letter-spacing: 0.1em;  /*自然な間隔 */
+}
+
+
+.cost-efficiency-section .line-deco {
+  position: absolute;          /* ← 上に固定配置 */
+  top: 0;                      /* 見出しの最上部に */
+  left: 0%;                    /* 左右動かす */
+  bottom: 2%;
+  width: 60px;                 /* 好みで 60〜120px */
+  height: 6px;
+  background:
+    radial-gradient(circle at 3px 3px, #19A05A 3px, transparent 4px) repeat-x;
+  background-size: 30px 6px; /* 間隔調整 */
+  margin: 0;                   /* ← inline配置じゃないので margin不要 */
+  order: 0;                    /* ← flex使わないので不要 */
+  display: block;
+}
+

@@ -668,10 +668,36 @@
     color: var(--text-dark);
 }
 .cost-headline .highlight-box {
-    font-size: 32px;
-    padding: 7px 13px;
+    font-size: 24px;
+    padding: 0px 0px;
     background-color: rgba(255, 235, 55, 0.34);
 }
+
+.colorful-box {
+  position: relative;
+  display: inline-block;
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  color: #333;
+  background: #fff;
+  padding: 4px 10px 4px 15px; /* ← 文字の内側の余白だけを調整 */
+
+}
+
+.colorful-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 5px; /* ← 枠線の太さだけを決める */
+  background: linear-gradient(90deg, #FFF74A 0%, #07B862 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
 .line-deco {
     width: 89px;
     height: 8px;
@@ -688,27 +714,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    margin: 20px 0;
 }
-.diagram-person {
-    text-align: center;
+.diagram-text{
+    width: 100%;
+    height: auto
 }
-.diagram-person img {
-    height: 115px;
+
+.diagram-image{
+    width: 100%;
+    height: auto
 }
-.diagram-person p {
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 1.2;
-    margin-top: -20px;
-    position: relative;
-}
-.diagram-arrow-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
+
 .arrow-line {
     width: 211px;
     height: 7px;
@@ -732,29 +751,28 @@
     color: var(--primary-color);
 }
 .diagram-box {
-    border: 4px solid var(--secondary-color);
-    background: var(--bg-light);
-    padding: 18px 46px;
-    border-radius: 16px;
-    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-    font-weight: 700;
-    font-size: 23px;
-    white-space: nowrap;
+  border: 2px solid #4A3B2A;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: #3C302D;
+  background: #fff;
 }
+
 .diagram-arrow-line {
     width: 62px;
     height: 7px;
     background: var(--secondary-color);
 }
 .diagram-box.green {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+  border-color: #19A05A;
+  color: #19A05A;
 }
 .cost-explanation {
     font-size: 18px;
     line-height: 2;
     letter-spacing: 2.34px;
-    max-width: 1186px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -786,43 +804,63 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1350px;
     margin: 0 auto;
 }
 .flow-image-container {
     position: relative;
 }
 .flow-image {
-    width: 528px;
-    height: 414px;
+    width: 80%;
+    height: auto;
     object-fit: cover;
     position: relative;
     z-index: 1;
-    top: -24px;
-    left: -23px;
+    top: -15px;
+    left: 7%;
 }
 .image-frame {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 533px;
-    height: 410px;
+    left: 3%;
+    width: 80%;
+    height: 80%;
     background-color: rgba(255, 235, 55, 0.34);
+    pointer-events: none;   /* 写真のクリックを邪魔しない */
 }
-.flow-steps-container h3 {
+
+.flow-path {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  position: relative; /* ← 現在位置を基準に移動可能にする */
+  top: 10px;   /* 下方向へ（数値↑でさらに下） */
+  left: -15%; /* 左方向へ（数値↓でさらに左） */
+}
+
+.path-group {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* タイトル → 図 → 注釈の縦並び */
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 80px;
+}
+
+/* タイトル */
+.path-group h3 {
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 2;
     letter-spacing: 3.12px;
-    margin: 0 0 30px 0;
+    margin: 0 0 20px -30px;   /* 上右下左 */
 }
-.flow-path {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
-}
+
+/* ラベル（A/B） */
 .path-label {
     width: 53px;
     height: 53px;
@@ -835,40 +873,56 @@
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
     font-size: 16px;
+    border: 2px solid #fff;
+    flex-shrink: 0;
+
+    position: relative;
+    top: -36px;   
+    left: 30px;  
 }
+
+/* ステップ列 */
+
+
 .steps-chain {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     gap: 8px;
 }
+
+/* ステップボックス */
 .step {
     background-color: var(--bg-light);
     border: 2px solid var(--secondary-color);
-    padding: 10px 17px;
+    padding: 6px 12px;
     border-radius: 13px;
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
     font-size: 16px;
     position: relative;
-    margin-right: 11px; /* space for arrow */
+    margin-right: 14px;  /* 吹き出しの間隔調整 */
 }
-.step:not(.no-arrow)::after {
+
+/* 矢印 */
+.step:not(:last-child)::after {
     content: '';
     position: absolute;
-    right: -17px;
+    right: -13px;
     top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    width: 17px;
-    height: 17px;
+    transform: translateY(-50%) rotate(270deg);
+    width: 13px;
+    height: 13px;
     background-color: var(--secondary-color);
     clip-path: polygon(50% 100%, 0 0, 100% 0);
 }
-.flow-note {
-    font-size: 15px;
-    letter-spacing: 1.95px;
-    text-align: left;
-    margin: 10px 0 20px 63px;
+
+.path-note{
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 13px;
+  color: #6b615c;
+  line-height: 1.5;
+  margin: -30px 0 0 0;               /* 余白不要。グリッドで位置が決まる */
 }
 
 @media (max-width: 1024px) {
@@ -881,14 +935,33 @@
         margin: 0 auto;
     }
     .flow-image { width: 100%; height: auto; top: -10px; left: -10px; }
-    .image-frame { width: 100%; height: 100%; }
+    .image-frame {
+    position: absolute;
+    top: 2%;
+    left: -5%;
+    width: 528px;
+    height: 355px;
+    background-color: rgba(255, 235, 55, 0.34);
+    }
+    .path-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    justify-content: center;  
+    gap: 12px;
+    margin-bottom: 80px;
+    margin-left: 10%;       
+    margin-right: auto;       /* ← 中央寄せのため */
+    }
+
     .steps-chain { justify-content: center; }
 }
 
 /* CSS for section section:About */
 .about-section {
     background-color: var(--bg-grey);
-    padding: 44px 20px;
+    padding: 0px 20px;
 }
 .about-container {
     display: grid;
@@ -910,9 +983,15 @@
     letter-spacing: 3.12px;
     color: var(--secondary-color);
     margin: 0;
+    position: relative;         
+    left: 30%;                  
+    transform: translateX(-25%);
 }
 .info-list {
-    margin: 0;
+    width: 480px;
+    position: relative;         
+    left: 30%;                  
+    transform: translateX(-25%);
     padding: 13px 0;
     display: flex;
     flex-direction: column;
@@ -933,19 +1012,31 @@
     margin: 0;
 }
 .map-container {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
+  position: relative;
+  width: 480px;          /* 地図の横幅（必要に応じて調整） */
+  height: 300px;         /* 高さの調整 */
+  left: 30%;             /* 画面の左から25%位置に配置 */
+  transform: translateX(-25%); /* 自身の幅の半分を戻して“中央寄せ風”に */
+  margin-top: 30px;      /* 上下の余白 */
+  border-radius: 8px;
+  overflow: hidden;
 }
+
 .map-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 .about-image img {
-    width: 100%;
-    height: 718px;
-    object-fit: cover;
+    position: relative;         
+    left: 45%;                  
+    transform: translateX(-60%);
+    width: 950px;         /* 横幅固定（480pxの左画像より少し大きめ） */
+    height: 850px;        /* 必要に応じて縦を調整 */
+    left: 75%;
+    object-fit: cover;    /* 外側をトリミングして中央を表示 */
+    object-position: center top; /* トリミングの中心を上寄せ */
+    border-radius: 6px;
 }
 
 @media (max-width: 992px) {
@@ -961,10 +1052,11 @@
     }
 }
 
-/* CSS for section section:QA */
 .qa-section {
     background-color: var(--bg-light);
 }
+
+/* 中央寄せ 2 列レイアウト */
 .qa-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -972,16 +1064,28 @@
     max-width: 1150px;
     margin: 0 auto 40px;
 }
+
+/* 1つのQ&Aの外枠 */
 .qa-item {
     background-color: var(--bg-light);
     border: 2px solid rgba(0, 0, 0, 0.25);
-    padding: 18px 46px;
     border-radius: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    overflow: hidden;
+    user-select: none;
 }
-.qa-item p {
+
+/* 念のため、この中は全部「横書き」に固定 */
+.qa-item,
+.qa-item * {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed;
+}
+
+/* Q の行（クリック部分） */
+.qa-question {
     margin: 0;
+    padding: 18px 46px;
     font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
     font-weight: 700;
     font-size: 24px;
@@ -989,29 +1093,44 @@
     color: var(--text-dark);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
-}
-.qa-item.active, .qa-item:hover {
-    background-color: var(--primary-color);
-}
-.qa-item.active p, .qa-item:hover p {
-    color: var(--text-light);
-}
-.qa-footer-text {
-    max-width: 555px;
-    margin: 0 auto;
-    font-size: 15px;
-    line-height: 1.6;
-    letter-spacing: 1.95px;
-    text-align: left;
+    background-color: var(--bg-light);
 }
 
+/* ホバー & 開いているとき */
+.qa-item:hover .qa-question,
+.qa-item.active .qa-question {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* A の文章（最初は閉じる） */
+.qa-answer {
+    display: none;
+    padding: 16px 46px 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    background-color: #ffffff;
+}
+
+/* active のときだけ表示 */
+.qa-item.active .qa-answer {
+    display: block;
+}
+
+/* スマホで 1 列に */
 @media (max-width: 768px) {
     .qa-grid {
         grid-template-columns: 1fr;
     }
-    .qa-item p {
+    .qa-question {
         font-size: 18px;
+        padding: 16px 20px;
+    }
+    .qa-answer {
+        padding: 12px 20px 16px;
     }
 }
 
@@ -1032,6 +1151,10 @@
     flex-direction: column;
     gap: 24px;
 }
+.section-subtitle{
+    margin-bottom: 40px;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -1404,43 +1527,14 @@
     </div>
 
     <div class="cost-headline">
-        <span class="line-deco"></span>
-        <span>中間業者なしの</span>
-        <span class="highlight-box">直接施工</span>
-        <span>だから実現できる安心プライス！</span>
+        <img src="images/Frame 1171279798.png" alt="Skilled worker" class="diagram-text">
     </div>
 
     <div class="cost-diagrams">
         <div class="diagram">
-            <div class="diagram-person">
-                <img src="images/116_712.svg" alt="Customer thinking of reform">
-                <p>リフォーム<br>しよう!</p>
-            </div>
-            <div class="diagram-arrow-group">
-                <div class="arrow-line"></div>
-                <div class="arrow-label">
-                    <span>コスト発生</span>
-                    <img src="images/116_764.svg" alt="cost icon">
-                </div>
-            </div>
-            <div class="diagram-box">仲介業者</div>
-            <div class="diagram-arrow-line"></div>
-            <div class="diagram-box green">水回りリフォームレンジャー</div>
+            <img src="images/Frame 32.png" alt="Skilled worker" class="diagram-image">
         </div>
-        <div class="diagram">
-            <div class="diagram-person">
-                <img src="images/116_770.svg" alt="Customer wanting reform">
-                <p>リフォーム<br>したい!</p>
-            </div>
-            <div class="diagram-arrow-group">
-                <div class="arrow-line dashed"></div>
-                <div class="arrow-label green">
-                    <span>直接依頼</span>
-                    <img src="images/116_814.svg" alt="direct icon">
-                </div>
-            </div>
-            <div class="diagram-box green">水回りリフォームレンジャー</div>
-        </div>
+        
     </div>
 
     <p class="cost-explanation">
@@ -1460,7 +1554,7 @@
             <img src="images/9c842b8d6988272e2097e5873d5716a5edb7c08f.png" alt="Consultation scene" class="flow-image">
             <div class="image-frame"></div>
         </div>
-        <div class="flow-steps-container">
+        <div class="path-group">
             <h3>現地までご訪問または<br>スマホからカンタン見積もり</h3>
             <div class="flow-path">
                 <div class="path-label">A</div>
@@ -1472,7 +1566,7 @@
                     <div class="step no-arrow">実施</div>
                 </div>
             </div>
-            <p class="flow-note">※金額確定はご契約時に現地調査を行い最終確定します。</p>
+            <p class=".path-note">※金額確定はご契約時に現地調査を行い最終確定します。</p>
             <div class="flow-path">
                 <div class="path-label">B</div>
                 <div class="steps-chain">
@@ -1511,7 +1605,7 @@
                 </div>
             </dl>
             <div class="map-container">
-                <img src="images/801f4f0cc1a27c707d219d9b1f9e988b2de3b1d5.png" alt="Map location">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77754.45942990943!2d-1.9600510597229326!3d52.48227057809173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870942d1b417173%3A0xca81fef0aeee7998!2z44Kk44Ku44Oq44K5IOODkOODvOODn-ODs-OCrOODoA!5e0!3m2!1sja!2sjp!4v1763453138068!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
         <div class="about-image">
@@ -1520,35 +1614,88 @@
     </div>
 </section>
 <section id="qa" class="qa-section">
-    <div class="section-title-container">
-        <h2 class="section-title">Q&A</h2>
-        <p class="section-subtitle">よくあるご質問</p>
+  <div class="section-title-container">
+      <h2 class="section-title">Q&A</h2>
+      <p class="section-subtitle">よくあるご質問</p>
+  </div>
+
+  <div class="qa-grid">
+      <div class="qa-item">
+    <div class="qa-question">
+        <span>Q</span> 相談するのに費用はかかりますか？
     </div>
 
-    <div class="qa-grid">
-        <div class="qa-item">
-            <p><span>Q</span>相談するのに費用はかかりますか？</p>
-        </div>
-        <div class="qa-item">
-            <p><span>Q</span>相談するのに費用はかかりますか？</p>
-        </div>
-        <div class="qa-item active">
-            <p><span>Q</span>相談するのに費用はかかりますか？</p>
-        </div>
-        <div class="qa-item">
-            <p><span>Q</span>相談するのに費用はかかりますか？</p>
-        </div>
-        <div class="qa-item">
-            <p><span>Q</span>相談するのに費用はかかりますか？</p>
-        </div>
-        <div class="qa-item">
-            <p><span>Q</span>相談するのに費用はかかりますか？</p>
-        </div>
+    <div class="qa-answer">
+        通常ならリフォーム会社や集客会社を経由して当社のような施工会社にリフォームが発注されるので、
+        中間コスト（リフォーム会社や集客会社の経費や利益）が発生します。
+        お客様から当社への直接のご依頼であれば、この中間コストが不要になるので、
+        どこにも負けない価格感でリフォームが可能です。
+    </div>
+</div>
+
+    <div class="qa-item">
+    <div class="qa-question">
+        <span>Q</span> 相談するのに費用はかかりますか？
     </div>
 
-    <p class="qa-footer-text">
-        物件探し・マネープラン・設計デザイン・施工・インテリアコーディネートまで１社完結で行っています。間に別業者が入らないので、進行がわかりやすく余計な費用がかかりません。
-    </p>
+    <div class="qa-answer">
+        通常ならリフォーム会社や集客会社を経由して当社のような施工会社にリフォームが発注されるので、
+        中間コスト（リフォーム会社や集客会社の経費や利益）が発生します。
+        お客様から当社への直接のご依頼であれば、この中間コストが不要になるので、
+        どこにも負けない価格感でリフォームが可能です。
+    </div>
+</div>
+     <div class="qa-item">
+    <div class="qa-question">
+        <span>Q</span> 相談するのに費用はかかりますか？
+    </div>
+
+    <div class="qa-answer">
+        通常ならリフォーム会社や集客会社を経由して当社のような施工会社にリフォームが発注されるので、
+        中間コスト（リフォーム会社や集客会社の経費や利益）が発生します。
+        お客様から当社への直接のご依頼であれば、この中間コストが不要になるので、
+        どこにも負けない価格感でリフォームが可能です。
+    </div>
+</div>
+     <div class="qa-item">
+    <div class="qa-question">
+        <span>Q</span> 相談するのに費用はかかりますか？
+    </div>
+
+    <div class="qa-answer">
+        通常ならリフォーム会社や集客会社を経由して当社のような施工会社にリフォームが発注されるので、
+        中間コスト（リフォーム会社や集客会社の経費や利益）が発生します。
+        お客様から当社への直接のご依頼であれば、この中間コストが不要になるので、
+        どこにも負けない価格感でリフォームが可能です。
+    </div>
+</div>
+    <div class="qa-item">
+    <div class="qa-question">
+        <span>Q</span> 相談するのに費用はかかりますか？
+    </div>
+
+    <div class="qa-answer">
+        通常ならリフォーム会社や集客会社を経由して当社のような施工会社にリフォームが発注されるので、
+        中間コスト（リフォーム会社や集客会社の経費や利益）が発生します。
+        お客様から当社への直接のご依頼であれば、この中間コストが不要になるので、
+        どこにも負けない価格感でリフォームが可能です。
+    </div>
+</div>   
+<div class="qa-item">
+    <div class="qa-question">
+        <span>Q</span> 相談するのに費用はかかりますか？
+    </div>
+
+    <div class="qa-answer">
+        通常ならリフォーム会社や集客会社を経由して当社のような施工会社にリフォームが発注されるので、
+        中間コスト（リフォーム会社や集客会社の経費や利益）が発生します。
+        お客様から当社への直接のご依頼であれば、この中間コストが不要になるので、
+        どこにも負けない価格感でリフォームが可能です。
+    </div>
+</div>
+</section>
+
+
 </section>
 <section id="contact" class="contact-section">
     <div class="section-title-container">

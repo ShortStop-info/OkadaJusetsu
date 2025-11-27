@@ -175,37 +175,6 @@ section {
   height: 18px;
 }
 
-@media (max-width: 1200px) {
-  .header-container {
-      gap: 20px;
-  }
-  .main-nav ul {
-      gap: 30px;
-  }
-  .main-nav a {
-      font-size: 16px;
-  }
-  .logo h1 {
-      font-size: 24px;
-  }
-}
-@media (max-width: 992px) {
-  .header-container {
-      flex-wrap: wrap;
-      justify-content: center;
-  }
-  .main-nav {
-      order: 3;
-      width: 100%;
-      margin-top: 20px;
-  }
-  .main-nav ul {
-      justify-content: center;
-  }
-  .header-divider {
-      display: none;
-  }
-}
 
 /* CSS for section section:Hero */
 .hero-section {
@@ -944,11 +913,12 @@ color: #19A05A;
 .image-frame {
   position: absolute;
   top: 0;
-  left: 3%;
-  width: 80%;
-  height: 80%;
+  left: 19px;
+  width: 80%;        /* ← グループ幅に自動追従 */
+  height: 100%;       /* ← グループ高さに自動追従 */
   background-color: rgba(255, 235, 55, 0.34);
-  pointer-events: none;   /* 写真のクリックを邪魔しない */
+  z-index: 0;
+  pointer-events: none;
 }
 
 .flow-path {
@@ -1041,44 +1011,12 @@ left: -15%; /* 左方向へ（数値↓でさらに左） */
 .path-note{
 grid-column: 2;
 grid-row: 2;
-font-size: 13px;
+font-size: 15px;
 color: #6b615c;
 line-height: 1.5;
 margin: -30px 0 0 0;               /* 余白不要。グリッドで位置が決まる */
 }
 
-@media (max-width: 1024px) {
-  .flow-content-wrapper {
-      grid-template-columns: 1fr;
-      gap: 50px;
-  }
-  .flow-image-container {
-      max-width: 533px;
-      margin: 0 auto;
-  }
-  .flow-image { width: 100%; height: auto; top: -10px; left: -10px; }
-  .image-frame {
-  position: absolute;
-  top: 2%;
-  left: -5%;
-  width: 528px;
-  height: 355px;
-  background-color: rgba(255, 235, 55, 0.34);
-  }
-  .path-group {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;      
-  justify-content: center;  
-  gap: 12px;
-  margin-bottom: 80px;
-  margin-left: 10%;       
-  margin-right: auto;       /* ← 中央寄せのため */
-  }
-
-  .steps-chain { justify-content: center; }
-}
 
 /* CSS for section section:About */
 .about-section {
@@ -1150,99 +1088,83 @@ overflow: hidden;
   object-fit: cover;
 }
 .about-image img {
-  position: relative;         
-  left: 45%;                  
+  position: relative;  
+  left: 73%;                       
   transform: translateX(-60%);
-  width: 950px;         /* 横幅固定（480pxの左画像より少し大きめ） */
-  height: 850px;        /* 必要に応じて縦を調整 */
-  left: 75%;
+  width: 653px;         /* 横幅固定（480pxの左画像より少し大きめ） */
+  height: 645px;        /* 必要に応じて縦を調整 */
+  
   object-fit: cover;    /* 外側をトリミングして中央を表示 */
   object-position: center top; /* トリミングの中心を上寄せ */
   border-radius: 6px;
 }
 
-@media (max-width: 992px) {
-  .about-container {
-      grid-template-columns: 1fr;
-  }
-  .about-image {
-      order: -1;
-  }
-  .about-image img {
-      height: auto;
-      max-height: 500px;
-  }
-}
+
 
 .qa-section {
-  background-color: var(--bg-light);
+    background-color: var(--bg-light);
 }
 
-/* 中央寄せ 2 列レイアウト */
 .qa-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 1150px;
-  margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1150px;
+    margin: 0 auto 40px;
 }
 
-/* 1つのQ&Aの外枠 */
+/* ただのコンテナ。枠線は付けない */
 .qa-item {
-  background-color: var(--bg-light);
-  border: 2px solid rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
-  cursor: pointer;
-  overflow: hidden;
-  user-select: none;
+    cursor: pointer;
+    user-select: none;
 }
 
-/* 念のため、この中は全部「横書き」に固定 */
-.qa-item,
-.qa-item * {
-  writing-mode: horizontal-tb !important;
-  text-orientation: mixed;
-}
-
-/* Q の行（クリック部分） */
+/* Q のボックス ＝＝ 緑の長方形 */
 .qa-question {
-  margin: 0;
-  padding: 18px 46px;
-  font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: 3.1px;
-  color: var(--text-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background-color: var(--bg-light);
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    margin: 0;
+    padding: 18px 46px;
+    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 3.1px;
+    border-radius: 16px;
+
+    background-color: var(--bg-light);             /* 閉じている時は白 */
+    color: var(--text-dark);
+    border: 2px solid rgba(0, 0, 0, 0.25);         /* 枠線をここに */
 }
 
-/* ホバー & 開いているとき */
+/* 開いている or ホバー時だけ緑に */
 .qa-item:hover .qa-question,
 .qa-item.active .qa-question {
-  background-color: var(--primary-color);
-  color: var(--text-light);
+    background-color: var(--primary-color);
+    color: var(--text-light);
 }
 
-/* A の文章（最初は閉じる） */
+/* A の文章（別枠／最初は非表示） */
 .qa-answer {
-  display: none;
-  padding: 16px 46px 20px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #555;
-  background-color: #ffffff;
+    display: none;
+    margin-top: 16px;                               /* Q との間の余白 */
+    padding: 0 8px;                                 /* 左右だけ少し余白 */
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    text-align: left;
 }
 
-/* active のときだけ表示 */
+/* 開いたときだけ表示 */
 .qa-item.active .qa-answer {
-  display: block;
+    display: block;
 }
 
-/* スマホで 1 列に */
 
 /* CSS for section section:Contact */
 .contact-section {
@@ -1414,15 +1336,104 @@ overflow: hidden;
   letter-spacing: 3.36px;
 }
 
-/* =========================
-   スマホ・タブレット対応
-   ========================= */
 
-/* 768px以下（タブレット） */
+@media (max-width: 1200px) {
+  .header-container {
+      gap: 20px;
+  }
+  .main-nav ul {
+      gap: 30px;
+  }
+  .main-nav a {
+      font-size: 16px;
+  }
+  .logo h1 {
+      font-size: 24px;
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .flow-content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 50px;
+  }
+  .flow-image-container {
+      max-width: 533px;
+      margin: 0 auto;
+  }
+  .flow-image {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  top: -15px;
+  left: 7%;
+}
+.image-frame {
+  position: absolute;
+  top: 0;
+  left: 19px;
+  width: 80%;        /* ← グループ幅に自動追従 */
+  height: 100%;       /* ← グループ高さに自動追従 */
+  background-color: rgba(255, 235, 55, 0.34);
+  z-index: 0;
+  pointer-events: none;
+}
+
+  .path-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center;  
+  gap: 12px;
+  margin-bottom: 80px;
+  margin-left: 10%;       
+  margin-right: auto;       /* ← 中央寄せのため */
+  }
+
+  .steps-chain { justify-content: center; }
+}
+
+
+@media (max-width: 992px) {
+  .about-container {
+      grid-template-columns: 1fr;
+  }
+  .about-image {
+      order: -1;
+  }
+  .about-image img {
+      height: auto;
+      max-height: 500px;
+      position: relative;  
+      left: 57%;
+  }
+  .header-container {
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .main-nav {
+      order: 3;
+      width: 100%;
+      margin-top: 20px;
+  }
+  .main-nav ul {
+      justify-content: center;
+  }
+  .header-divider {
+      display: none;
+  }
+}
+
 @media (max-width: 768px) {
 
+
   section {
-    padding: 50px 15px;
+    padding: 40px 15px;
   }
   .section-title {
     font-size: 32px;
@@ -1430,6 +1441,8 @@ overflow: hidden;
   .section-subtitle {
     font-size: 20px;
   }
+  .contact-section {
+      padding: 40px 15px;
 
   .hero-subtitle-region,
   .hero-subtitle-service {
@@ -2016,6 +2029,127 @@ overflow: hidden;
   .cost-explanation {
     font-size: 14px;
   }
+  .about-image img{
+    max-width: 550px;
+    left: 55%;
+  }
+  
+  .qa-grid {
+      grid-template-columns: 1fr;
+  }
+  .qa-question {
+      font-size: 18px;
+      padding: 16px 20px;
+  }
+  .qa-answer {
+      padding: 12px 20px 16px;
+  }
+  .main-nav ul {
+      flex-wrap: wrap;
+      gap: 15px;
+  }
+  .cta-button {
+      padding: 12px 20px;
+      font-size: 18px;
+  }
 }
 
+
+
+@media (max-width: 480px) {
+  .section-title{
+    font-size: 20px;
+  }
+  .section-subtitle{
+  margin-bottom: 0;
+  font-size: 15px;
+  }
+
+  .cost-efficiency-section .cost-headline{
+    padding-top: 0;
+  }
+  .cost-headline{
+    margin-bottom: 0;
+  }
+  .cost-explanation{
+    font-size: 6px;
+  }
+  .diagram-text{
+    width: 80%;
+    height: auto;
+  }
+  .diagram-image{
+    width: 90%;
+    height: auto;
+  }
+  .flow-image-container{
+    left: 4%;
+
+  }
+  .about-image img{
+    max-width: 420px;
+    left: 55%;
+  }
+  .about-info{
+    max-width: 330px;
+  }
+  .info-item{
+    font-size: 16px;
+  }
+  .info-list{
+    width: 100%;
+  }
+  .qa-question{
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .steps-chain {
+    width: 360px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .path-group{
+    margin-left: 5%;
+  }
+  /* ステップボックス */
+  .step {
+    background-color: var(--bg-light);
+    border: 2px solid var(--secondary-color);
+    padding: 6px 12px;
+    border-radius: 13px;
+    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    position: relative;
+    margin-right: 14px;  /* 吹き出しの間隔調整 */
+  }
+
+  /* 矢印 */
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -13px;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg);
+    width: 13px;
+    height: 13px;
+    background-color: var(--secondary-color);
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+  }
+
+  .path-note{
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 1px;
+  color: #6b615c;
+  line-height: 1.5;
+  margin: -30px 0 0 0;               /* 余白不要。グリッドで位置が決まる */
+  }
+  p{
+    font-size: 8px;
+  }
+
+}
 

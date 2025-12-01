@@ -27,6 +27,7 @@ body {
 section {
   position: relative;
   padding: 80px 20px;
+  overflow: hidden;
 }
 
 .section-title-container {

@@ -27,6 +27,7 @@ body {
 section {
   position: relative;
   padding: 80px 20px;
+  overflow: hidden;
 }
 
 .section-title-container {
@@ -175,6 +176,37 @@ section {
   height: 18px;
 }
 
+@media (max-width: 1200px) {
+  .header-container {
+      gap: 20px;
+  }
+  .main-nav ul {
+      gap: 30px;
+  }
+  .main-nav a {
+      font-size: 16px;
+  }
+  .logo h1 {
+      font-size: 24px;
+  }
+}
+@media (max-width: 992px) {
+  .header-container {
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .main-nav {
+      order: 3;
+      width: 100%;
+      margin-top: 20px;
+  }
+  .main-nav ul {
+      justify-content: center;
+  }
+  .header-divider {
+      display: none;
+  }
+}
 
 /* CSS for section section:Hero */
 .hero-section {
@@ -204,15 +236,6 @@ section {
   aspect-ratio: 4 / 3;  
   height: auto;          
   z-index: 2;
-}
-
-.hero-gradient-shape {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(279deg, rgba(255, 255, 255, 0) 21.53%, #ffffff 79.96%);
-  border-radius: 274px;
-  transform: rotate(154deg);
 }
 .hero-vector-shape {
   position: absolute;
@@ -861,12 +884,11 @@ color: #19A05A;
 .image-frame {
   position: absolute;
   top: 0;
-  left: 19px;
-  width: 80%;        /* ← グループ幅に自動追従 */
-  height: 100%;       /* ← グループ高さに自動追従 */
+  left: 3%;
+  width: 80%;
+  height: 80%;
   background-color: rgba(255, 235, 55, 0.34);
-  z-index: 0;
-  pointer-events: none;
+  pointer-events: none;   /* 写真のクリックを邪魔しない */
 }
 
 .flow-path {
@@ -965,6 +987,38 @@ line-height: 1.5;
 margin: -30px 0 0 0;               /* 余白不要。グリッドで位置が決まる */
 }
 
+@media (max-width: 1024px) {
+  .flow-content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 50px;
+  }
+  .flow-image-container {
+      max-width: 533px;
+      margin: 0 auto;
+  }
+  .flow-image { width: 100%; height: auto; top: -10px; left: -10px; }
+  .image-frame {
+  position: absolute;
+  top: 2%;
+  left: -5%;
+  width: 528px;
+  height: 355px;
+  background-color: rgba(255, 235, 55, 0.34);
+  }
+  .path-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center;  
+  gap: 12px;
+  margin-bottom: 80px;
+  margin-left: 10%;       
+  margin-right: auto;       /* ← 中央寄せのため */
+  }
+
+  .steps-chain { justify-content: center; }
+}
 
 /* CSS for section section:About */
 .about-section {
@@ -1396,6 +1450,645 @@ overflow: hidden;
   }
   .contact-form {
       padding: 20px;
+
+  .hero-subtitle-region,
+  .hero-subtitle-service {
+    line-height: 1.8 !important;
+  }
+
+  .hero-section{
+    padding-top: 40px !important;  /* 上の余白を狭く */
+    padding-bottom: 40px;
+    min-height: auto; 
+    padding-bottom: 50px; 
+  }
+  .hero-content {
+    transform: none !important;     /* 元の translate を無効化 */
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  .hero-image-container{
+    margin-top: 20px;    
+  }
+  .hero-features {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 16px;
+    margin-top: 30px;
+  }
+  .hero-masked-image img {
+  position: absolute;
+  transform: translate(55%, 5%);
+  bottom: 15%;
+  right: 10%;
+  width: 100%; 
+  height: auto;         
+  object-fit: contain;
+}
+
+
+
+  
+
+  .feature-circle {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+
+  .feature-circle p,
+  .feature-circle .small-text {
+        font-size: 13px;
+    line-height: 1.6;
+  }
+  .feature-icon {
+    height: 36px;
+  }
+
+  .hero-title-main,
+  .hero-title-brand {
+    line-height: 1.8 !important;
+    font-size: 36px; /* 現状より広めに設定 */
+  }
+  .hero-masked-image {
+    display: flex;
+    justify-content: flex-end; 
+    padding-right: 40%; 
+  }
+
+  /* serviceセクション */
+
+  .services-section {
+    padding-top: 0 !important;
+    background-color: var(--bg-light);
+    text-align: center;
+    z-index: 2;  
+  }
+  .service-cards-grid{
+    display: flex;
+    gap: 15px;
+    padding-top: 0px;
+    padding: 10px 16px 10px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    }
+    
+    .service-card {
+    position: relative;
+    
+    /* scroll-snap は無効に（勝手に位置が補正されるのを防ぐ） */
+    /* scroll-snap-align: center; は削除 */
+    
+    flex: 0 0 540px;   /* カード幅は640でOK（ここはお好みで） */
+    max-width: 100%;
+    
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "media  speccol"
+      "thumbs speccol";
+    column-gap: 16px;
+    row-gap: 12px;
+    
+    background: #fff;
+    box-sizing: border-box;
+    margin: 0 0 24px 0;
+    z-index: 2;
+    }
+    .deco-vector-7 { 
+      position: absolute;
+      top: 108px; 
+      left: 45px;
+      transform: translate(5px, -800px); 
+      width: 17%;    
+      height: auto;
+      opacity: 0.2;
+      z-index: 1;
+    }
+    
+    .card-header {
+    background: #FFF348;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0;
+    }
+    .card-main-image {
+    grid-area: media;
+    width: 100%;                   /* ★ 比率を揃える高さ */
+    object-fit: cover;
+    height: 240px;  
+    }
+  
+    .card-body{ 
+      display: contents; 
+    }
+    .price-table {
+    background: #f6f5f3;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    }
+    .price-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #949494;
+    font-size: 18px;
+    padding-bottom: 20px;
+    letter-spacing: 3px;
+    }
+    .price-row.total {
+      border-bottom: none;
+    }
+    .card-gallery {
+    grid-area: thumbs;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 120px;         
+    gap: 10px;
+    }
+    .card-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+    .service-categories {
+      display: flex;
+      flex-wrap: wrap;      /* ★ これだけで2段にできる */
+      gap: 12px 16px;       /* 行間、列間の間隔 */
+      justify-content: center;
+    }
+    .category-btn {
+      flex: 0 1 calc((100% - 60px) / 3); 
+      /* 3列分の幅（60px = gap 30px × 2） */
+      text-align: center;
+      padding: 10px;
+      row-gap: 0 !important; 
+    }
+    .services-disclaimer {
+      font-size: 12px;
+      line-height: 1.6;
+      letter-spacing: 1.95px;
+      color: var(--text-dark);
+      max-width: 872px;
+      margin: 0 auto;
+      margin-top: 0 !important;
+      
+    }
+    
+  .feature-section {
+    padding: 0;
+  }
+  .feature-container {
+  display: grid;
+  grid-template-columns: 592px 1fr;
+  align-items: stretch;
+  width: 768px;
+  height: 200px;
+  }
+
+  
+  .feature-stack .bg-img {
+  position: absolute;
+  inset: 0;
+  width: 768px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.2;
+  }
+  
+  .feature-stack .text-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: auto;
+  transform: translate(-25%,-127%);
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+  }
+
+  .feature-image {
+    position: absolute;
+    display: none;
+    }
+
+  .info-list {
+    width: 100%;
+    padding: 0 20px;
+    transform: none;
+    left: 0;
+  }
+
+  .map-container {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    transform: none;
+    left: 0;
+  }
+
+  .main-nav ul {
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.cta-button {
+    padding: 12px 20px;
+    font-size: 18px;
+}
+
+.qa-grid {
+  grid-template-columns: 1fr;
+}
+.qa-question {
+  font-size: 18px;
+  padding: 16px 20px;
+}
+.qa-answer {
+  padding: 12px 20px 16px;
+}
+.cost-explanation {
+  font-size: 16px;
+}
+}
+
+/* 430px以下（スマホ） */
+@media (max-width: 430px) {
+
+  section {
+    padding: 40px 12px;
+    overflow: hidden;
+  }
+  .section-title-container{
+    margin-bottom: 0px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .hero-subtitle-region,
+  .hero-subtitle-service {
+    line-height: 1.8 !important;
+  }
+  .main-nav ul {
+    display: flex;
+    flex-wrap: wrap;               /* 2段に折り返す */
+    justify-content: center;       /* 全体を中央寄せ */
+    gap: 16px 80px;                /* 行の間隔, 列の間隔はお好みで調整 */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .main-nav ul li {
+  flex: 0 0 80%;                 /* 1行あたり2つ（=50%） */
+  display: flex;
+  justify-content: center;       /* テキストを中央寄せ */
+}
+
+.hero-gradient-shape {
+  opacity: 0.2;
+}
+
+
+.hero-vector-shape {
+  backdrop-filter: none;
+}
+
+.hero-headline {
+  background-color: 		#1A9C5D;
+  padding: 5px 35px;
+  border-radius: 58px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.hero-headline::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-top: 27px solid 	#1A9C5D;
+}
+.hero-headline .highlight-yellow {
+  font-weight: bold;
+  font-size: 20px;
+  color: #FFF56B;
+}
+.hero-subtitle-region{
+  margin-top:30px  ;
+  font-size: 20px;
+}
+.hero-subtitle-service{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.hero-title-main{
+  line-height: 1.6 !important;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.hero-title-brand {
+  line-height: 1.6 !important;
+  font-size: 30px;
+  letter-spacing: 10px;
+  transform:translateX(15px) ;
+}
+
+.hero-title-main .spacing-1 {
+  letter-spacing: 10px;
+}
+.hero-title-main .spacing-2 {
+  letter-spacing: 10px;
+}
+.hero-title-main .spacing-3 {
+  letter-spacing: 10px;
+}
+
+
+  .hero-section {
+    padding-top: 24px !important;
+    padding-bottom: 32px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    transform: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .hero-image-container {
+    margin-top: 16px; /* ← これが重要 */
+    max-width: 430px;
+
+  }
+
+  .hero-features {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-masked-image {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10%;  /* ← まず20% → 5% に */
+  overflow: hidden;   /* ← 飛び出し防止（安全策） */
+  }
+
+  .hero-masked-image img {
+    position: relative;
+    transform: translate(55%, 5%);
+    bottom: 8%;
+    right: 5%;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    overflow: hidden;
+  }
+
+  .feature-circle {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+
+  .feature-circle p,
+  .feature-circle .small-text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .feature-icon {
+    height: 32px;
+  }
+
+
+
+  /* serviceセクション */
+
+  .services-section {
+    padding-top: 0 !important;
+    background-color: var(--bg-light);
+    text-align: center;
+    z-index: 2;
+  }
+  .section-title-container{
+    margin-top: 10px;
+  }
+
+
+  .service-cards-grid {
+    display: flex;
+    gap: 20px;
+    padding-top: 0;
+    padding: 10px 12px 10px;
+    padding-left: calc((100vw - 320px) / 2);
+    padding-right: calc((100vw - 320px) / 2);
+  }
+
+  .service-card {
+    flex: 0 0 350px;
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 8px;
+    margin: 0 0 20px 0;
+  }
+
+  .card-header {
+    font-size: 13px;
+    padding: 8px 16px;
+    margin: 0;
+  }
+
+  .card-main-image {
+    grid-area: media;
+    width: 100%;
+    height: 150px;
+  }
+
+  .card-body {
+    display: contents;
+  }
+    .price-table {
+      padding: 10px 6px;       /* 少し詰める */
+      gap: 8px;                /* 行間少し縮める */
+    }
+  
+    .price-row {
+      font-size: 12px;         /* スマホでは少し小さめ */
+      padding-bottom: 8px;     /* 下余白縮め */
+      letter-spacing: 1px;     /* 字間を詰めて読みやすく */
+    
+  }
+  
+
+  .price-row.total {
+    border-bottom: none;
+  }
+
+  .card-gallery {
+    grid-area: thumbs;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 90px;
+    gap: 8px;
+  }
+
+  .card-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    justify-content: center;
+  }
+
+  .category-btn {
+    flex: 0 1 calc((100% - 16px) / 2); /* 余白に合わせて調整。16pxにするのが自然 */
+    padding: 8px;
+    font-size: 16px; 
+  }
+
+  .services-disclaimer {
+    font-size: 8px;
+    line-height: 1.6;
+    letter-spacing: 1.5px;
+    color: var(--text-dark);
+    max-width: 100%;
+    margin: 8px auto 0;
+  }
+
+  .feature-section {
+    padding: 0;
+  }
+
+  .feature-container {
+    display: block;
+    height: 150px;
+  }
+
+  .feature-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .feature-stack .bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.2;
+  }
+
+  .feature-stack .text-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: auto;
+    transform: translate(-100%,-60%);
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .feature-image {
+    display: none;
+  }
+
+  .info-list {
+    width: 100%;
+    padding: 0 16px;
+    transform: none;
+    left: 0;
+  }
+
+  .map-container {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    transform: none;
+    left: 0;
+  }
+
+  .main-nav ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cta-button {
+    padding: 10px 16px;
+    font-size: 16px;
+  }
+
+  .qa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qa-question {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+
+  .qa-answer {
+    padding: 10px 16px 14px;
+  }
+
+  .cost-explanation {
+    font-size: 14px;
   }
   .about-image img{
     max-width: 550px;

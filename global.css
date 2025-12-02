@@ -336,79 +336,6 @@ section {
   height: auto;
   z-index: 200;
 }
-
-@media (max-width: 768px) {
-    /* 左上　緑 */
-.deco-vector-1 { 
-  position: relative; 
-  top: 47px; 
-  left: -106px;  
-  width: 20%;     
-  height: auto; 
-  transform: translate(-250px, -95px); 
-  z-index: 1;
-  overflow: visible;  
-}
-/* 左下緑 */
-.deco-vector-2 { 
-  position: absolute; 
-  top: 640px; 
-  left: -146px; 
-  transform: translate(40px, -350px); 
-  width: 40%;           
-  height: auto; 
-}
-/* 左黄色玉 */
-.deco-vector-3 { 
-  position: absolute; 
-  top: 249px; 
-  left: -103px;
-  transform: translate(40px, -150px); 
-  width: 15%;    
-  height: auto;
-}
-/* 左上点々 */
-.deco-vector-4 { position: absolute; 
-  top: 108px; 
-  left: 45px;
-  transform: translate(-55px, -140px); 
-  width: 15%;    
-  height: auto;
-  opacity: 0.2;
-}
-/* 右ぼつぼつ */
-.deco-vector-5 { 
-  position: absolute; 
-  top: 613px; 
-  left: -55px;
-  transform: translate(11px, -30px); 
-  width: 15%;     
-  height: auto;
-  z-index: 2;
-  opacity: 0.2;
-  
-}
-/* 左下ぼつぼつ */
-.deco-vector-6 { 
-  position: absolute; 
-  top: 613px; 
-  left: -55px;
-  transform: translate(100px, -200px); 
-  width: 15%;     
-  height: auto;
-  z-index: 2;
-  opacity: 0.2;
-}
-.deco-vector-8 { 
-  position: absolute; 
-  top: 249px; 
-  left: -103px;
-  transform: translate(10px, 250px);  
-  width: 15%;    
-  height: auto;
-  z-index: 200;
-}
-  }
 .hero-content {
   position: relative;
   z-index: 2;
@@ -554,7 +481,15 @@ text-align: center;
   .hero-image-container { left: 50%; transform: translateX(-50%); width: 100%; opacity: 0.3; }
   .hero-features { flex-direction: column; gap: 20px; }
 }
-
+@media (max-width: 768px) {
+  .hero-section { min-height: auto; padding-bottom: 50px; }
+  .hero-title-main, .hero-title-brand { font-size: 48px; }
+  .hero-subtitle-region, .hero-subtitle-service { font-size: 24px; }
+  .hero-headline { font-size: 20px; }
+  .hero-headline .highlight-yellow, .hero-headline .highlight-white { font-size: 24px; }
+  .feature-circle { width: 180px; height: 180px; }
+  .feature-circle p { font-size: 20px; }
+}
 
 /* CSS for section section:Services */
 .services-section {
@@ -567,11 +502,10 @@ text-align: center;
   position: relative;
   top: 108px; 
   left: 45px;
-  transform: translate(550px, -800px); 
-  width: 17%;    
+  transform: translate(-55px, -140px); 
+  width: 15%;    
   height: auto;
   opacity: 0.2;
-  z-index: 1;
 }
 .service-cards-grid{
 display: flex;
@@ -609,7 +543,6 @@ row-gap: 12px;
 background: #fff;
 box-sizing: border-box;
 margin: 0 0 24px 0;
-z-index: 2;
 }
 
 .card-header {
@@ -723,7 +656,9 @@ scroll-padding: 16px;
 .service-cards-grid{ display:flex; flex-wrap:nowrap; overflow-x:auto; }
 }
 
-
+@media (max-width: 768px){
+.service-cards-grid{ display:flex; flex-wrap:nowrap; overflow-x:auto; }
+}
 
 /* CSS for section section:Feature */
 .feature-section {
@@ -767,6 +702,16 @@ transform: translate(-50%, -50%);
 object-fit: contain;
 z-index: 2;
 pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+.feature-container {
+  grid-template-columns: 1fr;
+}
+.feature-image,
+.feature-stack {
+  height: auto;
+}
 }
 /* CSS for section section:CostEfficiency */
 .cost-efficiency-section {
@@ -886,8 +831,6 @@ border-color: #19A05A;
 color: #19A05A;
 }
 .cost-explanation {
-  white-space: normal !important;
-  display: block !important;
   font-size: 18px;
   line-height: 2;
   letter-spacing: 2.34px;
@@ -906,6 +849,11 @@ color: #19A05A;
   }
   .arrow-line, .diagram-arrow-line, .arrow-line.dashed {
       width: 100px;
+  }
+}
+@media (max-width: 768px) {
+  .cost-explanation {
+      font-size: 16px;
   }
 }
 
@@ -1089,6 +1037,7 @@ margin: -30px 0 0 0;               /* 余白不要。グリッドで位置が決
   display: flex;
   flex-direction: column;
   gap: 9px;
+  margin: 30px 0;
 }
 .info-header h4 {
   font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
@@ -1143,14 +1092,15 @@ overflow: hidden;
 }
 .about-image img {
   position: relative;  
-  left: 73%;                       
+  left: 78%;                       
   transform: translateX(-60%);
-  width: 653px;         /* 横幅固定（480pxの左画像より少し大きめ） */
-  height: 645px;        /* 必要に応じて縦を調整 */
+  width: 120%;         /* 横幅固定（480pxの左画像より少し大きめ） */
+  height: 760px;        /* 必要に応じて縦を調整 */
   
   object-fit: cover;    /* 外側をトリミングして中央を表示 */
   object-position: center top; /* トリミングの中心を上寄せ */
   border-radius: 6px;
+  margin: 0;
 }
 
 
@@ -1497,6 +1447,9 @@ overflow: hidden;
   }
   .contact-section {
       padding: 40px 15px;
+  }
+  .contact-form {
+      padding: 20px;
 
   .hero-subtitle-region,
   .hero-subtitle-service {

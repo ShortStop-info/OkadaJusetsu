@@ -792,9 +792,6 @@ scroll-padding: 16px;
 .price-row{ font-size:24px;}
 }
 
-@media (max-width: 1024px){
-.service-cards-grid{ display:flex; flex-wrap:nowrap; overflow-x:auto; }
-}
 
 
 
@@ -1011,7 +1008,7 @@ color: #19A05A;
   top: 0;
   left: 3%;
   width: 80%;
-  height: 80%;
+  height: 100%;
   background-color: rgba(255, 235, 55, 0.34);
   pointer-events: none;   /* 写真のクリックを邪魔しない */
 }
@@ -1109,41 +1106,10 @@ grid-row: 2;
 font-size: 15px;
 color: #6b615c;
 line-height: 1.5;
-margin: -30px 0 0 0;               /* 余白不要。グリッドで位置が決まる */
+margin: 0px 0 0 0;               /* 余白不要。グリッドで位置が決まる */
 }
 
-@media (max-width: 1024px) {
-  .flow-content-wrapper {
-      grid-template-columns: 1fr;
-      gap: 50px;
-  }
-  .flow-image-container {
-      max-width: 533px;
-      margin: 0 auto;
-  }
-  .flow-image { width: 100%; height: auto; top: -10px; left: -10px; }
-  .image-frame {
-  position: absolute;
-  top: 2%;
-  left: -5%;
-  width: 528px;
-  height: 355px;
-  background-color: rgba(255, 235, 55, 0.34);
-  }
-  .path-group {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;      
-  justify-content: center;  
-  gap: 12px;
-  margin-bottom: 80px;
-  margin-left: 10%;       
-  margin-right: auto;       /* ← 中央寄せのため */
-  }
 
-  .steps-chain { justify-content: center; }
-}
 
 /* CSS for section section:About */
 .about-section {
@@ -1209,11 +1175,7 @@ border-radius: 8px;
 overflow: hidden;
 }
 
-.map-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .about-image img {
   position: relative;  
   left: 73%;                       
@@ -1482,7 +1444,17 @@ overflow: hidden;
 
 
 @media (max-width: 1024px) {
-  .flow-content-wrapper {
+  .service-cards-grid{
+    display:flex; flex-wrap:nowrap; overflow-x:auto; }
+  .feature-container {
+  grid-template-columns: 1fr;
+  }
+  .feature-image,
+  .feature-stack {
+    height: auto;
+  }
+  
+    .flow-content-wrapper {
       grid-template-columns: 1fr;
       gap: 50px;
   }
@@ -1490,26 +1462,34 @@ overflow: hidden;
       max-width: 533px;
       margin: 0 auto;
   }
+  
   .flow-image {
-  width: 80%;
+  width: 100%;
   height: auto;
   object-fit: cover;
   position: relative;
   z-index: 1;
   top: -15px;
-  left: 7%;
+  left: 3%;
 }
 .image-frame {
   position: absolute;
   top: 0;
-  left: 19px;
-  width: 80%;        /* ← グループ幅に自動追従 */
-  height: 100%;       /* ← グループ高さに自動追従 */
+  left: 0%;
+  width: 100%;
+  height: 100%;
   background-color: rgba(255, 235, 55, 0.34);
-  z-index: 0;
-  pointer-events: none;
+  pointer-events: none;   /* 写真のクリックを邪魔しない */
 }
-
+  .flow-content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 50px;
+  }
+  
+  
+  .path-group h3{
+    margin-left: -40%;
+  }
   .path-group {
   position: relative;
   display: flex;
@@ -1518,9 +1498,25 @@ overflow: hidden;
   justify-content: center;  
   gap: 12px;
   margin-bottom: 80px;
-  margin-left: 10%;       
+  margin-left: 23%;       
   margin-right: auto;       /* ← 中央寄せのため */
   }
+  .about-image img {
+  position: relative;  
+  left: 78%;                       
+  transform: translateX(-60%);
+  width: 120%;         /* 横幅固定（480pxの左画像より少し大きめ） */
+  height: 760px;        /* 必要に応じて縦を調整 */
+  
+  object-fit: cover;    /* 外側をトリミングして中央を表示 */
+  object-position: center top; /* トリミングの中心を上寄せ */
+  border-radius: 6px;
+  margin: 0;
+}
+
+  .steps-chain { justify-content: center; }
+
+  
 
   .steps-chain { justify-content: center; }
 }
@@ -1535,9 +1531,9 @@ overflow: hidden;
   }
   .about-image img {
       height: auto;
-      max-height: 500px;
+      max-height: 80%;
       position: relative;  
-      left: 57%;
+      left: 61%;
   }
   .header-container {
       flex-wrap: wrap;
@@ -1553,6 +1549,9 @@ overflow: hidden;
   }
   .header-divider {
       display: none;
+  }
+  .path-group{
+    margin-left: 19%;
   }
 }
 
@@ -2266,12 +2265,18 @@ overflow: hidden;
     height: auto;
   }
   .flow-image-container{
-    left: 4%;
-
+    left: 13%;
   }
+   .flow-image{
+    width: 70%;
+  }
+  .image-frame{
+    width: 70%;
+  }
+
   .about-image img{
-    max-width: 420px;
-    left: 55%;
+    max-width: 100%;
+    left: 60%;
   }
   .about-info{
     max-width: 330px;
@@ -2282,12 +2287,16 @@ overflow: hidden;
   .info-list{
     width: 100%;
   }
+  .map-container {
+    width: 100%;
+    height: 200px;
+  }
   .qa-question{
     font-size: 12px;
     padding: 8px 10px;
   }
   .steps-chain {
-    width: 360px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
@@ -2295,6 +2304,9 @@ overflow: hidden;
 
   .path-group{
     margin-left: 5%;
+  }
+  .path-group h3{
+    margin-left: -7%;
   }
   /* ステップボックス */
   .step {
@@ -2334,4 +2346,17 @@ overflow: hidden;
     font-size: 8px;
   }
 
+}
+
+@media (max-width: 430px) {
+.about-image img{
+    max-width: 100%;
+    left: 0%;
+  }
+  .map-container {
+    padding: 0 16px;
+  }
+  .image-frame{
+    height: 95%;
+  }
 }

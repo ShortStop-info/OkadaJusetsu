@@ -31,7 +31,6 @@ const initBtn = bar.querySelector('.category-btn[data-category="キッチン"]')
 if (initBtn) initBtn.click();
 // There is currently no JavaScript code here.// There is currently no JavaScript code here.
 
-document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".qa-item").forEach(item => {
         const question = item.querySelector(".qa-question");
 

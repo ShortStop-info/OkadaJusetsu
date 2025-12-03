@@ -9,6 +9,14 @@
   --border-color: #949494;
 }
 
+.hamburger {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+}
+
 body {
   margin: 0;
   font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
@@ -2349,6 +2357,10 @@ overflow: hidden;
 }
 
 @media (max-width: 430px) {
+  .header-container {
+    padding-top: 0 !important;
+}
+
 .about-image img{
     max-width: 100%;
     left: 0%;
@@ -2359,4 +2371,135 @@ overflow: hidden;
   .image-frame{
     height: 95%;
   }
+
+  /* PC用は非表示 */
+  .main-nav,
+  .pc-cta {
+      display: none !important;
+  }
+
+  /* ハンバーガー表示 */
+
+  .logo{
+    display: none !important;
+  }
+  .hamburger {
+      display: block;
+      cursor: pointer;
+      width: 32px;
+      height: 22px;
+      position: fixed;
+      top: 25px;        /* 好みに合わせて上下調整 */
+      right: 16px;      /* 右端に寄せる */
+      z-index: 2000;  
+  }
+  .hamburger span {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: #333;
+      border-radius: 3px;
+      left: 0;
+      transition: 0.3s;
+  }
+  .header-container {
+    position: relative;
+}
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 9px; }
+  .hamburger span:nth-child(3) { top: 18px; }
+
+  /* ✖状態 */
+  .hamburger.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+      opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* スライドメニュー */
+  .mobile-nav {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      height: 100vh;
+      background: #fff;
+      padding: 70px 20px;
+      box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+      transition: 0.35s ease;
+      z-index: 1000;
+  }
+
+  .mobile-nav.open {
+      right: 0;
+  }
+
+  /* ⭐タイトル部分 */
+  .mobile-nav-title {
+    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
+    font-weight: 700;     /* 見出しなのでPCより太めに */
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    color: #36a557;
+  }
+
+  .mobile-nav-divider {
+      width: 100%;
+      height: 1px;
+      background: #ddd;
+      margin-bottom: 25px;
+  }
+
+  .mobile-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+  }
+
+  .mobile-nav ul li {
+    padding: 14px 0;
+  }
+
+  .mobile-nav ul li a {
+    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--text-dark);
+    text-decoration: none;
+    letter-spacing: 0.2px;
+  }
+
+  /* モバイル用 CTA ボタン */
+  .mobile-cta {
+    background: linear-gradient(135deg, #c7ee7e 0%, #1a9c5d 152.87%);
+    border-radius: 16px;
+    padding: 18px 33px;
+    color: var(--text-light);
+    font-family: 'LINE Seed JP_OTF', 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    gap: 18px;
+  }
+
+  .mobile-nav a.active-link {
+    position: relative;
+}
+
+.mobile-nav a.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;       /* スマホに合わせて少し浅めに調整 */
+    left: 0;
+    width: 60px;        /* スマホは短く可愛くするなら 60px */
+    height: 3px;
+    background: linear-gradient(135deg, #c7ee7e 0%, #1a9c5d 152.87%);
+    border-radius: 2px;
+}
 }

@@ -31,6 +31,7 @@ const initBtn = bar.querySelector('.category-btn[data-category="キッチン"]')
 if (initBtn) initBtn.click();
 // There is currently no JavaScript code here.// There is currently no JavaScript code here.
 
+
     document.querySelectorAll(".qa-item").forEach(item => {
         const question = item.querySelector(".qa-question");
 
@@ -38,4 +39,21 @@ if (initBtn) initBtn.click();
             item.classList.toggle("active");
         });
     });
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    // ハンバーガーの開閉
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('open');
+    });
+    
+    // リンクを押したらメニューを閉じる ＆ ハンバーガーも元に戻す
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            hamburger.classList.remove('active');
+        });
+  });
 });
+

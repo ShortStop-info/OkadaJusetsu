@@ -37,8 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const question = item.querySelector('.qa-question');
     if (!question) return;
 
-    question.addEventListener('click', () => {
-      item.classList.toggle('active');
+    document.querySelectorAll(".qa-item").forEach(item => {
+        const question = item.querySelector(".qa-question");
+
+        question.addEventListener("click", () => {
+            item.classList.toggle("active");
+        });
     });
   });
 });
